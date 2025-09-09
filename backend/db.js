@@ -1,7 +1,7 @@
 const mysql = require("mysql2");
 require("dotenv").config();
 
-// First connection (without db)
+
 const baseConnection = mysql.createConnection({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
@@ -9,16 +9,16 @@ const baseConnection = mysql.createConnection({
   password: process.env.DB_PASSWORD,
 });
 
-// Main connection (with db)
+
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
-  database: "movies_db", // <--- Fixed to movies_db
+  database: "movies_db", 
 });
 
-// Create database if not exists
+
 baseConnection.query(`CREATE DATABASE IF NOT EXISTS movies_db`, (err) => {
   if (err) {
     console.error("Error creating database:", err);
@@ -33,7 +33,7 @@ baseConnection.query(`CREATE DATABASE IF NOT EXISTS movies_db`, (err) => {
     }
     console.log("Connected to MySQL database");
 
-    // Ensure movies table exists
+
     db.query(
       `CREATE TABLE IF NOT EXISTS movies (
         id INT AUTO_INCREMENT PRIMARY KEY,

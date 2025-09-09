@@ -6,7 +6,7 @@ const MovieDelete = ({ movieId, onDeleted }) => {
   const handleDelete = async () => {
     if (!window.confirm("Are you sure you want to delete this movie?")) return;
     setLoading(true);
-    await fetch(`http://localhost:5000/movies/${movieId}`, {
+    await fetch(`http://localhost:5001/movies/${movieId}`, {
       method: "DELETE",
     });
     setLoading(false);

@@ -11,7 +11,7 @@ const MovieEdit = ({ movie, onUpdated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await fetch(`http://localhost:5000/movies/${movie.id}`, {
+    await fetch(`http://localhost:5001/movies/${movie.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),

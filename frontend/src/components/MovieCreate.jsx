@@ -17,7 +17,7 @@ const MovieCreate = ({ onCreated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    await fetch("http://localhost:5000/movies", {
+    await fetch("http://localhost:5001/movies", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),

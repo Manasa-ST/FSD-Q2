@@ -10,7 +10,7 @@ const MovieManager = () => {
   const [refresh, setRefresh] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/movies")
+    fetch("http://localhost:5001/movies")
       .then((res) => res.json())
       .then((data) => setMovies(data));
   }, [refresh]);

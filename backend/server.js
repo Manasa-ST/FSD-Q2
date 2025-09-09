@@ -3,14 +3,13 @@ const cors = require("cors");
 const db = require("./db");
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
-// Middleware
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// GET /movies - Retrieve all movies
 app.get("/movies", (req, res) => {
   db.query("SELECT * FROM movies", (err, results) => {
     if (err) {
@@ -21,7 +20,7 @@ app.get("/movies", (req, res) => {
   });
 });
 
-// POST /movies - Add a new movie
+
 app.post("/movies", (req, res) => {
   const { title, director, genre, release_year, rating } = req.body;
   const sql =
@@ -41,7 +40,6 @@ app.post("/movies", (req, res) => {
   );
 });
 
-// PUT /movies/:id - Update a movie
 app.put("/movies/:id", (req, res) => {
   const { id } = req.params;
   const { title, director, genre, release_year, rating } = req.body;
@@ -63,7 +61,7 @@ app.put("/movies/:id", (req, res) => {
   );
 });
 
-// DELETE /movies/:id - Delete a movie
+
 app.delete("/movies/:id", (req, res) => {
   const { id } = req.params;
   const sql = "DELETE FROM movies WHERE id=?";
@@ -79,7 +77,7 @@ app.delete("/movies/:id", (req, res) => {
   });
 });
 
-// Start server
+
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
